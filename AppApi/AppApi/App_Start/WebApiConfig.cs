@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
+
 
 namespace AppApi
 {
@@ -13,6 +15,10 @@ namespace AppApi
 
             // Rutas de Web API
             config.MapHttpAttributeRoutes();
+
+            // Configuración y servicios de Web API
+            var cors = new EnableCorsAttribute("*", "*","*");
+            config.EnableCors(cors);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

@@ -45,11 +45,11 @@ namespace AppApi.Data
             }
         }
 
-        public static bool eliminarUsuario(Usuario oUsuario)
+        public static bool eliminarUsuario(string id)
         {
             ConexionBD objEst = new ConexionBD();
             string sentencia;
-            sentencia = "EXECUTE USP_Elminar'" + oUsuario.ID_Usuario + "'";
+            sentencia = "EXECUTE USP_Elminar'" + id + "'";
 
             if (!objEst.EjecutarSentencia(sentencia, false))
             {
@@ -77,7 +77,7 @@ namespace AppApi.Data
                 {
                     oListaUsuario.Add(new Usuario()
                     {
-                        ID_Usuario = Convert.ToInt32(dr["ID_Usuario"]),
+                        ID_Usuario = dr["ID_Usuario"].ToString(),
                         Nombres = dr["Nombres"].ToString(),
                         Telefono = dr["Telefono"].ToString(),
                         Correo = dr["Correo"].ToString(),
@@ -90,6 +90,36 @@ namespace AppApi.Data
             else
             {
                 return oListaUsuario;
+            }
+        }
+
+        public static List<Usuario> Obtener(string id)
+        {
+            List<Usuario> oListarUsuario = new List<Usuario>();
+            ConexionBD objEst = new ConexionBD();
+            string sentencia;
+            sentencia = "EXECUTE USP_Seleccionar '" + id + "'";
+
+            if(objEst.Consultar(sentencia, false))
+            {
+                SqlDataReader dr = objEst.Reader;
+                while (dr.Read())
+                {
+                    oListarUsuario.Add(new Usuario()
+                    {
+                        ID_Usuario = dr["ID_Usuario"].ToString(),
+                        Nombres = dr["Nombres"].ToString(),
+                        Telefono = dr["Telefono"].ToString(),
+                        Correo = dr["Correo"].ToString(),
+                        Ciudad = dr["Ciudad"].ToString(),
+                        FechaIngreso = Convert.ToDateTime(dr["FechaIngreso"].ToString())
+                    });
+                }
+                return oListarUsuario;
+            }
+            else
+            {
+                return oListarUsuario;
             }
         }
     }

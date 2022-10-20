@@ -7,7 +7,7 @@ namespace AppApi.Models
 {
     public class Usuario
     {
-        public int ID_Usuario { get; set; }
+        public string ID_Usuario { get; set; }
         public string Nombres { get; set; }
         public string Telefono { get; set; }
         public string Correo { get; set; }
