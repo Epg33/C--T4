@@ -55,7 +55,8 @@ namespace AppApi.Data
         {
             try
             {
-                strCadenaCnx = "Data Source=ARMAPRRQDFSD301\\SQLEXPRESS;Initial Catalog = DB_API_DATOS; Integrated Security = True";
+                /*strCadenaCnx = "Data Source=ARMAPRRQDFSD301\\SQLEXPRESS;Initial Catalog = DB_API_DATOS; Integrated Security = True";`*/
+                strCadenaCnx = "workstation id=appapidb.mssql.somee.com;packet size=4096;user id=epg33_SQLLogin_1;pwd=ztzf519b25;data source=appapidb.mssql.somee.com;persist security info=False;initial catalog=appapidb";
             objCnnBD.ConnectionString = strCadenaCnx;
                 objCnnBD.Open();
                 blnBDAbierta = true;
