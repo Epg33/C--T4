@@ -9,11 +9,12 @@ namespace Music_Store_Api.Data
 {
     public class EmpleadoData
     {
-        public static bool registrarEmpleado(Empleado empleado)
+        public static List<Output>  registrarEmpleado(Empleado empleado)
         {
             ConexionBD objEst = new ConexionBD();
+            List<Output> output = new List<Output>();
             string sentencia;
-            sentencia = "EXECUTE USP_registrar '" + empleado.id_empleado + "' , '" +
+            sentencia = "EXECUTE USP_registro '" + empleado.id_empleado + "' , '" +
                 empleado.nombre_empleado + "','" + empleado.ocupacion + "', '" +
                 empleado.horario_llegada + "', '" + empleado.horario_salida + "', '" +
                 empleado.costo_guitarra + "', '" + empleado.costo_piano + "', '" +
@@ -21,20 +22,29 @@ namespace Music_Store_Api.Data
                 empleado.compradores_atendidos + "', '" + empleado.fecha_contratacion + "'";
             if (!objEst.EjecutarSentencia(sentencia, false))
             {
+                output.Add(new Output() { 
+                    Error = true,
+                    Message = objEst.Error
+                });
                 objEst = null;
-                return false;
+                return output;
             }
             else
             {
                 objEst = null;
-                return true;
+                output.Add(new Output()
+                {
+                    Error = false,
+                    Message = "Usuario creado correctamente"
+                });
+                return output;
             }
         }
         public static bool actualizarEmpleado(Empleado empleado)
         {
             ConexionBD objEst = new ConexionBD();
             string sentencia;
-            sentencia = "EXECUTE USP_registrar '" + empleado.id_empleado + "' , '" +
+            sentencia = "EXECUTE USP_actualizacion '" + empleado.id_empleado + "' , '" +
                 empleado.nombre_empleado + "','" + empleado.ocupacion + "', '" +
                 empleado.horario_llegada + "', '" + empleado.horario_salida + "', '" +
                 empleado.costo_guitarra + "', '" + empleado.costo_piano + "', '" +
@@ -55,7 +65,7 @@ namespace Music_Store_Api.Data
         {
             ConexionBD objEst = new ConexionBD();
             string sentencia;
-            sentencia = "EXECUTE USP_registrar '" + id + "'";
+            sentencia = "EXECUTE USP_borrar '" + id + "'";
             if (!objEst.EjecutarSentencia(sentencia, false))
             {
                 objEst = null;

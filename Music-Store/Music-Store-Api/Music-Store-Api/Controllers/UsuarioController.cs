@@ -24,7 +24,7 @@ namespace Music_Store_Api.Controllers
         }
 
         // POST api/<controller>
-        public bool Post([FromBody] Empleado empleado)
+        public List<Output> Post([FromBody] Empleado empleado)
         {
             return EmpleadoData.registrarEmpleado(empleado);
         }
