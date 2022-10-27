@@ -10,8 +10,8 @@ namespace Music_Store_Api.Models
 		public string id_empleado { get; set; }
 		public string nombre_empleado { get; set; }
         public string ocupacion { get; set; }
-        public DateTimeKind horario_llegada { get; set; }
-        public DateTimeKind horario_salida { get; set; }
+        public string horario_llegada { get; set; }
+        public string horario_salida { get; set; }
         public int costo_guitarra { get; set; }
         public int costo_piano { get; set; }
         public int costo_bateria { get; set; }
