@@ -55,7 +55,8 @@ namespace Music_Store_Api.Data
         {
             try
             {
-                strCadenaCnx = "Data Source=ARMAPRRQDFSD301\\SQLEXPRESS;InitialCatalog = musicdb; Integrated Security = True";
+                /*strCadenaCnx = "Data Source=ARMAPRRQDFSD301\\SQLEXPRESS;InitialCatalog = musicdb; Integrated Security = True";*/
+                strCadenaCnx = "workstation id=musicstoreapi.mssql.somee.com;packet size=4096;user id=epg33_SQLLogin_1;pwd=ztzf519b25;data source=musicstoreapi.mssql.somee.com;persist security info=False;initial catalog=musicstoreapi";
             objCnnBD.ConnectionString = strCadenaCnx;
                 objCnnBD.Open();
                 blnBDAbierta = true;
