@@ -18,6 +18,7 @@ create table Empleado(
 	compradores_atendidos bigint not null,
 	fecha_contratacion date not null
 );
+ insert into Empleado(id_empleado,nombre_empleado,ocupacion,horario_llegada,horario_salida,costo_guitarra,costo_piano,costo_bateria,salario_empleado,compradores_atendidos,fecha_contratacion) values ('777', 'luis sdfghjklñpe', 'pene', '12:00:00', '06:00:00', 50000, 60000, 70000, 150000, 1800000, '2012-11-24');
 go
 create procedure USP_registro 
 	@id_empleado varchar (15),

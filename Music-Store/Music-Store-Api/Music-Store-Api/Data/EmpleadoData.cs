@@ -51,11 +51,11 @@ namespace Music_Store_Api.Data
                 return true;
             }
         }
-        public static bool eliminarEmpleado(Empleado empleado)
+        public static bool eliminarEmpleado(string id)
         {
             ConexionBD objEst = new ConexionBD();
             string sentencia;
-            sentencia = "EXECUTE USP_registrar '" + empleado.id_empleado + "'";
+            sentencia = "EXECUTE USP_registrar '" + id + "'";
             if (!objEst.EjecutarSentencia(sentencia, false))
             {
                 objEst = null;
@@ -86,12 +86,12 @@ namespace Music_Store_Api.Data
                         ocupacion = read["ocupacion"].ToString(),
                         horario_llegada = read["horario_llegada"].ToString(),
                         horario_salida = read["horario_salida"].ToString(),
-                        costo_guitarra= Convert.ToInt32(read["costo_guitarra"]),
-                        costo_piano= Convert.ToInt32(read["costo_piano"]),
-                        costo_bateria= Convert.ToInt32(read["costo_bateria"]),
+                        costo_guitarra = Convert.ToInt32(read["costo_guitarra"]),
+                        costo_piano = Convert.ToInt32(read["costo_piano"]),
+                        costo_bateria = Convert.ToInt32(read["costo_bateria"]),
                         salario_empleado = (float)Convert.ToDouble(read["salario_empleado"]),
                         compradores_atendidos = Convert.ToInt32(read["compradores_atendidos"]),
-                        fecha_contratacion = Convert.ToDateTime(read["fecha_contratacion"])
+                        fecha_contratacion = read["fecha_contratacion"].ToString()
                     });
                 }
                 return empleado; 
@@ -126,7 +126,7 @@ namespace Music_Store_Api.Data
                         costo_bateria = Convert.ToInt32(read["costo_bateria"]),
                         salario_empleado = (float)Convert.ToDouble(read["salario_empleado"]),
                         compradores_atendidos = Convert.ToInt32(read["compradores_atendidos"]),
-                        fecha_contratacion = Convert.ToDateTime(read["fecha_contratacion"])
+                        fecha_contratacion = read["fecha_contratacion"].ToString()
                     });
                 }
                 return empleado;
