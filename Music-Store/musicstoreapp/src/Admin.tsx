@@ -6,7 +6,6 @@ const Admin = () => {
     <>
       <main className="bg-gradient-to-r from-sky-400 to-blue-500 w-screen h-screen">
         <table className="w-full h-full flex flex-col">
-          
           <tr className="flex flex-row gap-4">
             <td className="w-22">ID</td>
             <td className="w-22">Nombre</td>
