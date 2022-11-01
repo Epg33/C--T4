@@ -11,13 +11,14 @@ function CreateEmp() {
           <input type="text" name="" id="" />
           <input type="text" name="" id="" />
           <input type="text" name="" id="" />
-          <input type="text" name="" id="" />
-          <input type="text" name="" id="" />
-          <input type="text" name="" id="" />
-          <input type="text" name="" id="" />
-          <input type="text" name="" id="" />
-          <input type="text" name="" id="" />
-          <input type="text" name="" id="" />
+          <input type='time' name="" id="" />
+          <input type="time" name="" id="" />
+          <input type='number' name="" id="" />
+          <input type="number" name="" id="" /> 
+          <input type="number" name="" id="" />
+          <input type="number" name="" id="" />
+          <input type="number" name="" id="" />
+          <input type="date" name="" id="" />
         </form>
       </main>
     </>
