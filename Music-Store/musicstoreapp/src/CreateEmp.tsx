@@ -7,7 +7,7 @@ function CreateEmp() {
     e.preventDefault();
     DatosEmp();
   }
-  const ID:any = useRef();
+  const Id:any = useRef();
   const Nombre:any = useRef();
   const Ocupacion:any = useRef();
   const Llegada:any = useRef();
@@ -22,7 +22,7 @@ function CreateEmp() {
   function DatosEmp(){
     setObjEmp(
       {
-        id : ID.current.value,
+        id : Id.current.value,
         nombre : Nombre.current.value,
         ocupacion : Ocupacion.current.value,
         llegada : Llegada.current.value,
@@ -38,7 +38,21 @@ function CreateEmp() {
   }
   const request = (e:any):void =>{
     e.preventDefault();
-    axios.post('http://www.musicapiapp.somee.com/api/empleado', ObjEmp).then(res => console.log(res)).catch(err=> console.log(err))
+    axios.post('http://www.musicapiapp.somee.com/api/empleado', 
+    {
+      id_empleado : Id.current.value,
+      nombre_empleado : Nombre.current.value,
+      ocupacion : Ocupacion.current.value,
+      horario_llegada : Llegada.current.value,
+      horario_salida : Salida.current.value,
+      costo_guitarra : Guitarra.current.value,
+      costo_piano : Piano.current.value,
+      costo_bateria : Bateria.current.value,
+      salario_empleado : Salario.current.value,
+      compradores_atendidos: Atencion.current.value,
+      fecha_contratacion : Contratacion.current.value
+    }
+    ).then(res => console.log(res)).catch(err=> console.log(err))
   }
 
   return (
@@ -52,7 +66,7 @@ function CreateEmp() {
             <div>
               <label className="text-sm font-medium"> ID </label>
               <div className="relative mt-1">
-                <input type="text" className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={ID} required placeholder="Ingrese ID" />
+                <input type="text" className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Id} required placeholder="Ingrese ID" />
               </div>
             </div>
 
