@@ -14,7 +14,7 @@ namespace Music_Store_Api.Data
             ConexionBD objEst = new ConexionBD();
             List<Output> output = new List<Output>();
             string sentencia;
-            sentencia = "EXECUTE USP_registro '" + empleado.id_empleado + "' , '" +
+            sentencia = "EXECUTE USP_registro '" +
                 empleado.nombre_empleado + "','" + empleado.ocupacion + "', '" +
                 empleado.horario_llegada + "', '" + empleado.horario_salida + "', '" +
                 empleado.costo_guitarra + "', '" + empleado.costo_piano + "', '" +
@@ -91,7 +91,7 @@ namespace Music_Store_Api.Data
                 {
                     empleado.Add(new Empleado()
                     {
-                        id_empleado = read["id_empleado"].ToString(),
+                        id_empleado = Convert.ToInt32(read["id_empleado"]),
                         nombre_empleado = read["nombre_empleado"].ToString(),
                         ocupacion = read["ocupacion"].ToString(),
                         horario_llegada = read["horario_llegada"].ToString(),
@@ -126,7 +126,7 @@ namespace Music_Store_Api.Data
                 {
                     empleado.Add(new Empleado()
                     {
-                        id_empleado = read["id_empleado"].ToString(),
+                        id_empleado = Convert.ToInt32(read["id_empleado"]),
                         nombre_empleado = read["nombre_empleado"].ToString(),
                         ocupacion = read["ocupacion"].ToString(),
                         horario_llegada = read["horario_llegada"].ToString(),

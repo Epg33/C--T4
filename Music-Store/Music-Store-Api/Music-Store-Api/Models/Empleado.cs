@@ -7,7 +7,7 @@ namespace Music_Store_Api.Models
 {
     public class Empleado
     {
-		public string id_empleado { get; set; }
+		public int id_empleado { get; set; }
 		public string nombre_empleado { get; set; }
         public string ocupacion { get; set; }
         public string horario_llegada { get; set; }
