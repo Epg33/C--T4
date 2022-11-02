@@ -1,10 +1,46 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
+import axios from "axios";
 
 function CreateEmp() {
 
   const makeRequest = (e:any):void => {
     e.preventDefault();
+    DatosEmp();
   }
+  const ID:any = useRef();
+  const Nombre:any = useRef();
+  const Ocupacion:any = useRef();
+  const Llegada:any = useRef();
+  const Salida:any = useRef();
+  const Guitarra:any = useRef();
+  const Piano:any = useRef();
+  const Bateria:any = useRef(); 
+  const Salario:any = useRef();
+  const Atencion:any = useRef();
+  const Contratacion:any = useRef();
+  const [ObjEmp, setObjEmp] = useState<any>()
+  function DatosEmp(){
+    setObjEmp(
+      {
+        id : ID.current.value,
+        nombre : Nombre.current.value,
+        ocupacion : Ocupacion.current.value,
+        llegada : Llegada.current.value,
+        salida : Salida.current.value,
+        guitarra : Guitarra.current.value,
+        piano : Piano.current.value,
+        bateria : Bateria.current.value,
+        salario : Salario.current.value,
+        atencion : Atencion.current.value,
+        contratacion : Contratacion.current.value
+      }
+    )
+  }
+  const request = (e:any):void =>{
+    e.preventDefault();
+    axios.post('http://www.musicapiapp.somee.com/api/empleado', ObjEmp).then(res => console.log(res)).catch(err=> console.log(err))
+  }
+
   return (
     <>
       <header>
@@ -13,90 +49,93 @@ function CreateEmp() {
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <main className="mx-auto max-w-lg">
           <form action="" className="mt-6 mb-0 space-y-4 rounded-lg p-8 shadow-2xl">
-            <p className="text-lg font-medium">Sign in to your account</p>
-
             <div>
               <label className="text-sm font-medium"> ID </label>
               <div className="relative mt-1">
-                <input type="text" className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" placeholder="Ingrese ID" />
+                <input type="text" className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={ID} required placeholder="Ingrese ID" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Nombre </label>
               <div className="relative mt-1">
-                <input type="text"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" placeholder="Ingrese Nombre" />
+                <input type="text"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Nombre} required placeholder="Ingrese Nombre" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Ocupacion </label>
               <div className="relative mt-1">
-                <input type="text"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" placeholder="Ingrese Ocupacion" />
+                <input type="text"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Ocupacion} required placeholder="Ingrese Ocupacion" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Llegada </label>
               <div className="relative mt-1">
-                <input type="time"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" placeholder="Ingrese Hora de llegada" />
+                <input type="time"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Llegada} required placeholder="Ingrese Hora de llegada" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Salida </label>
               <div className="relative mt-1">
-                <input type="time"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" placeholder="Ingrese Hora de salida" />
+                <input type="time"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Salida} required placeholder="Ingrese Hora de salida" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Guitarra </label>
               <div className="relative mt-1">
-                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" placeholder="Ingrese Costo de la guitarra" />
+                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Guitarra} required placeholder="Ingrese Costo de la guitarra" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Piano </label>
               <div className="relative mt-1">
-                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" placeholder="Ingrese Costo del piano" />
+                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Piano} required placeholder="Ingrese Costo del piano" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Bateria </label>
               <div className="relative mt-1">
-                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" placeholder="Ingrese Costo de la bateria" />
+                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Bateria} required placeholder="Ingrese Costo de la bateria" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Salario </label>
               <div className="relative mt-1">
-                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" placeholder="Ingrese el Salario" />
+                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Salario} required placeholder="Ingrese el Salario" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Atencion </label>
               <div className="relative mt-1">
-                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" placeholder="Ingrese Compradores Atendidos" />
+                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Atencion} required placeholder="Ingrese Compradores Atendidos" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Contratacion </label>
               <div className="relative mt-1">
-                <input type="date"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" placeholder="Ingrese Ingrese fecha de contratacion" />
+                <input type="date"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Contratacion} required placeholder="Ingrese Ingrese fecha de contratacion" />
               </div>
             </div>
 
             <button type="submit" onClick={makeRequest} className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white" > Sign in </button>
+            <button onClick={request}>
+              mandar
+            </button>
           </form>
         </main>
       </div>
     </>
+
+
   );
 }
 

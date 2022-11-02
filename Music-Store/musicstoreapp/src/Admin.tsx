@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import axios from "axios";
 
 const Admin = () => {
+  useEffect(():void =>{
+    axios.get('http://www.musicapiapp.somee.com/api/empleado').then(res=>console.log(res))
+  })
   return (
     <>
       <main className="bg-gradient-to-r from-sky-400 to-blue-500 w-screen h-screen">
