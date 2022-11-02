@@ -8,22 +8,36 @@ const Admin = () => {
   return (
     <>
       <main className="bg-gradient-to-r from-sky-400 to-blue-500 w-screen h-screen flex justify-center items-center">
-        <table className="w-4/5 h-4/5 flex flex-col items-centers bg-gray-50 rounded-3xl">
+        <table className="w-[93%] h-4/5 flex flex-col items-centers bg-gray-50 rounded-3xl">
           <thead className="w-full h-[8%] flex justify-center pt-2 bg-slate-700 rounded-t-3xl">
-          <tr className="flex flex-row gap-4 w-full justify-evenly">
-            <td className="w-22 text-gray-50 font-bold">ID</td>
-            <td className="w-22 text-gray-50 font-bold">Nombre</td>
-            <td className="w-22 text-gray-50 font-bold">Ocupacion</td>
-            <td className="w-22 text-gray-50 font-bold">Llegada</td>
-            <td className="w-22 text-gray-50 font-bold">Salida</td>
-            <td className="w-22 text-gray-50 font-bold">Guitarras</td>
-            <td className="w-22 text-gray-50 font-bold">Piano</td>
-            <td className="w-22 text-gray-50 font-bold">Bateria</td>
-            <td className="w-22 text-gray-50 font-bold">Salario</td>
-            <td className="w-22 text-gray-50 font-bold">Atendidos</td>
-            <td className="w-22 text-gray-50 font-bold">Fecha Contratacion</td>
+          <tr className="flex flex-row gap-4s w-full justify-evenly">
+            <td className="w-20 text-gray-50 text-sm font-bold">ID</td>
+            <td className="w-20 text-gray-50 text-sm font-bold">Nombre</td>
+            <td className="w-20 text-gray-50 text-sm font-bold">Ocupacion</td>
+            <td className="w-20 text-gray-50 text-sm font-bold">Llegada</td>
+            <td className="w-20 text-gray-50 text-sm font-bold">Salida</td>
+            <td className="w-20 text-gray-50 text-sm font-bold">Guitarras</td>
+            <td className="w-20 text-gray-50 text-sm font-bold">Piano</td>
+            <td className="w-20 text-gray-50 text-sm font-bold">Bateria</td>
+            <td className="w-20 text-gray-50 text-sm font-bold">Salario</td>
+            <td className="w-20 text-gray-50 text-sm font-bold">Atendidos</td>
+            <td className="w-20 text-gray-50 text-sm font-bold">Contratacion</td>
           </tr>
           </thead>
+          <tbody className="w-full h-[8%] flex justify-center pt-2 rounded-t-3xl pl-0">
+            <tr className="flex flex-row gap-4 w-full justify-evenly p-0">
+              <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">contenido prueba</td>
+              <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">contenido prueba</td>
+              <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">contenido prueba</td>
+              <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">contenido prueba</td>
+              <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">contenido prueba</td>
+              <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">contenido prueba</td>
+              <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">contenido prueba</td>
+              <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">contenido prueba</td>
+              <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">contenido prueba</td>
+              <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">contenido prueba</td>
+            </tr>
+          </tbody>
         </table>
       </main>
     </>
