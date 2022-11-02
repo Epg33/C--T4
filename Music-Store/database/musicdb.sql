@@ -6,7 +6,7 @@ use xde;
 
 
 create table Empleado(
-	id_empleado varchar(15) primary key not null,
+	id_empleado int IDENTITY(1,1) primary key not null,
 	nombre_empleado varchar(20) not null,
 	ocupacion varchar(20) not null,
 	horario_llegada time not null,
@@ -18,10 +18,10 @@ create table Empleado(
 	compradores_atendidos bigint not null,
 	fecha_contratacion date not null
 );
- insert into Empleado(id_empleado,nombre_empleado,ocupacion,horario_llegada,horario_salida,costo_guitarra,costo_piano,costo_bateria,salario_empleado,compradores_atendidos,fecha_contratacion) values ('777', 'luis sdfghjklñpe', 'pene', '12:00:00', '06:00:00', 50000, 60000, 70000, 150000, 1800000, '2012-11-24');
+ insert into Empleado(nombre_empleado,ocupacion,horario_llegada,horario_salida,costo_guitarra,costo_piano,costo_bateria,salario_empleado,compradores_atendidos,fecha_contratacion) values ( 'luis sdfghjklñpe', 'pene', '12:00:00', '06:00:00', 50000, 60000, 70000, 150000, 1800000, '2012-11-24');
 go
 create procedure USP_registro 
-	@id_empleado varchar (15),
+	
 	@nombre_empleado varchar (20),
 	@ocupacion varchar (20),
 	@horario_llegada time,
@@ -34,11 +34,11 @@ create procedure USP_registro
 	@fecha_contratacion date 
 as
 begin
-   insert into Empleado(id_empleado,nombre_empleado,ocupacion,horario_llegada,horario_salida,costo_guitarra,costo_piano,costo_bateria,salario_empleado,compradores_atendidos,fecha_contratacion) values(@id_empleado,@nombre_empleado,@ocupacion,@horario_llegada,@horario_salida, @costo_guitarra,@costo_piano,@costo_bateria,@salario_empleado,@compradores_atendidos,@fecha_contratacion)
+   insert into Empleado(nombre_empleado,ocupacion,horario_llegada,horario_salida,costo_guitarra,costo_piano,costo_bateria,salario_empleado,compradores_atendidos,fecha_contratacion) values(@nombre_empleado,@ocupacion,@horario_llegada,@horario_salida, @costo_guitarra,@costo_piano,@costo_bateria,@salario_empleado,@compradores_atendidos,@fecha_contratacion)
 end
 go
 
-execute USP_registro '123456789123456', 'luis sdfghjklñpe', 'sivbnmigtfrdeswaqsdtg', '12:00:00', '06:00:00', 50000, 60000, 70000, 150000, 1800000, '2012-11-24';
+execute USP_registro  'luis sdfghjklñpe', 'sivbnmigtfrdeswaqsdtg', '12:00:00', '06:00:00', 50000, 60000, 70000, 150000, 1800000, '2012-11-24';
 
 go
 
@@ -54,7 +54,7 @@ execute USP_borrar '123456789123456';
 
 go
 create procedure USP_actualizacion 
-	@id_empleado varchar (15),
+	@id_empleado int,
 	@nombre_empleado varchar (20),
 	@ocupacion varchar (20),
 	@horario_llegada time,
@@ -82,18 +82,18 @@ begin
 end
 go
 
-execute USP_actualizacion '123456789123456', 'Juan', 'puta', '14:00:00', '08:00:00', 55000, 65000, 75000, 100000, 3800000, '2015-10-22';
+execute USP_actualizacion 123456789123456, 'Juan', 'puta', '14:00:00', '08:00:00', 55000, 65000, 75000, 100000, 3800000, '2015-10-22';
 
 go 
 create procedure USP_listarUno
-	@id_empleado varchar(15)
+	@id_empleado int
 as
 begin
 	select * from Empleado where id_empleado=@id_empleado;
 end
 go
 
-execute USP_listarUno '123456789123456';
+execute USP_listarUno 1;
 
 go 
 create procedure USP_listar

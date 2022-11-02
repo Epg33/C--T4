@@ -22,25 +22,7 @@ function CreateEmp() {
   function DatosEmp(){
     setObjEmp(
       {
-        id : Id.current.value,
-        nombre : Nombre.current.value,
-        ocupacion : Ocupacion.current.value,
-        llegada : Llegada.current.value,
-        salida : Salida.current.value,
-        guitarra : Guitarra.current.value,
-        piano : Piano.current.value,
-        bateria : Bateria.current.value,
-        salario : Salario.current.value,
-        atencion : Atencion.current.value,
-        contratacion : Contratacion.current.value
-      }
-    )
-  }
-  const request = (e:any):void =>{
-    e.preventDefault();
-    axios.post('http://www.musicapiapp.somee.com/api/empleado', 
-    {
-      id_empleado : Id.current.value,
+        id_empleado : Id.current.value,
       nombre_empleado : Nombre.current.value,
       ocupacion : Ocupacion.current.value,
       horario_llegada : Llegada.current.value,
@@ -51,8 +33,12 @@ function CreateEmp() {
       salario_empleado : Salario.current.value,
       compradores_atendidos: Atencion.current.value,
       fecha_contratacion : Contratacion.current.value
-    }
-    ).then(res => console.log(res)).catch(err=> console.log(err))
+      }
+    )
+  }
+  const request = (e:any):void =>{
+    e.preventDefault();
+    axios.post('http://www.musicapiapp.somee.com/api/empleado', ObjEmp ).then(res => console.log(res)).catch(err=> console.log(err))
   }
 
   return (
