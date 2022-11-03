@@ -26,7 +26,7 @@ const Admin = () => {
           </thead>
           <tbody className="w-full h-[8%] flex justify-center pt-2 rounded-t-3xl pl-0">
             <tr className="flex flex-row gap-4 w-full justify-evenly p-0">
-              <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">contenido prueba</td>
+              <td><input type='text' className="w-full text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap" defaultValue="contenido prueba" /></td>
               <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">contenido prueba</td>
               <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">contenido prueba</td>
               <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">contenido prueba</td>
