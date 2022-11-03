@@ -3,7 +3,7 @@ import axios from "axios";
 
 const Admin = () => {
   useEffect(():void =>{
-    axios.get('http://www.musicapiapp.somee.com/api/empleado').then(res=>console.log(res))
+    axios.get('http://www.musicstoreapii.somee.com/api/empleado').then(res=>console.log(res))
   })
   return (
     <>

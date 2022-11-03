@@ -5,9 +5,8 @@ function CreateEmp() {
 
   const makeRequest = (e:any):void => {
     e.preventDefault();
-    DatosEmp();
+    request()
   }
-  const Id:any = useRef();
   const Nombre:any = useRef();
   const Ocupacion:any = useRef();
   const Llegada:any = useRef();
@@ -18,11 +17,10 @@ function CreateEmp() {
   const Salario:any = useRef();
   const Atencion:any = useRef();
   const Contratacion:any = useRef();
-  const [ObjEmp, setObjEmp] = useState<any>()
-  function DatosEmp(){
-    setObjEmp(
-      {
-        id_empleado : Id.current.value,
+
+  const request = ():void =>{
+    axios.post('http://www.musicstoreapii.somee.com/api/empleado', 
+    {
       nombre_empleado : Nombre.current.value,
       ocupacion : Ocupacion.current.value,
       horario_llegada : Llegada.current.value,
@@ -33,12 +31,13 @@ function CreateEmp() {
       salario_empleado : Salario.current.value,
       compradores_atendidos: Atencion.current.value,
       fecha_contratacion : Contratacion.current.value
-      }
+      }   
     )
-  }
-  const request = (e:any):void =>{
-    e.preventDefault();
-    axios.post('http://www.musicapiapp.somee.com/api/empleado', ObjEmp ).then(res => console.log(res)).catch(err=> console.log(err))
+      .then(res => console.log(res))
+      .then(()=>{
+        alert('Empleado creado exitosamente');
+        location.reload()})
+      .catch(err=> console.log(err))
   }
 
   return (
@@ -49,12 +48,6 @@ function CreateEmp() {
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <main className="mx-auto max-w-lg">
           <form action="" className="mt-6 mb-0 space-y-4 rounded-lg p-8 shadow-2xl">
-            <div>
-              <label className="text-sm font-medium"> ID </label>
-              <div className="relative mt-1">
-                <input type="text" className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Id} required placeholder="Ingrese ID" />
-              </div>
-            </div>
 
             <div>
               <label  className="text-sm font-medium"> Nombre </label>
@@ -127,9 +120,6 @@ function CreateEmp() {
             </div>
 
             <button type="submit" onClick={makeRequest} className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white" > Sign in </button>
-            <button onClick={request}>
-              mandar
-            </button>
           </form>
         </main>
       </div>
