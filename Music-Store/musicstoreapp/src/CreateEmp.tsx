@@ -2,10 +2,17 @@ import React, {useEffect, useRef, useState} from "react";
 import axios from "axios";
 
 function CreateEmp() {
+  const $ = (prop:any) => {return prop.current.value} 
 
   const makeRequest = (e:any):void => {
     e.preventDefault();
-    request()
+    if($(Nombre).length <3){
+      alert('Nombre debe tener al menos tres caracteres')
+    }
+    else{
+      request()
+    }
+    
   }
   const Nombre:any = useRef();
   const Ocupacion:any = useRef();
@@ -52,70 +59,70 @@ function CreateEmp() {
             <div>
               <label  className="text-sm font-medium"> Nombre </label>
               <div className="relative mt-1">
-                <input type="text"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Nombre} required placeholder="Ingrese Nombre" />
+                <input type="text" minLength={3} className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm outline-none transition-all duration-300 focus:outline-gray-500 focus:outline-1" ref={Nombre} required placeholder="Ingrese Nombre" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Ocupacion </label>
               <div className="relative mt-1">
-                <input type="text"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Ocupacion} required placeholder="Ingrese Ocupacion" />
+                <input type="text"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm outline-none transition-all duration-300 focus:outline-gray-500 focus:outline-1" ref={Ocupacion} required placeholder="Ingrese Ocupacion" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Llegada </label>
               <div className="relative mt-1">
-                <input type="time"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Llegada} required placeholder="Ingrese Hora de llegada" />
+                <input type="time"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm outline-none transition-all duration-300 focus:outline-gray-500 focus:outline-1" ref={Llegada} required placeholder="Ingrese Hora de llegada" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Salida </label>
               <div className="relative mt-1">
-                <input type="time"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Salida} required placeholder="Ingrese Hora de salida" />
+                <input type="time"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm outline-none transition-all duration-300 focus:outline-gray-500 focus:outline-1" ref={Salida} required placeholder="Ingrese Hora de salida" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Guitarra </label>
               <div className="relative mt-1">
-                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Guitarra} required placeholder="Ingrese Costo de la guitarra" />
+                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm outline-none transition-all duration-300 focus:outline-gray-500 focus:outline-1" ref={Guitarra} required placeholder="Ingrese Costo de la guitarra" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Piano </label>
               <div className="relative mt-1">
-                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Piano} required placeholder="Ingrese Costo del piano" />
+                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm outline-none transition-all duration-300 focus:outline-gray-500 focus:outline-1" ref={Piano} required placeholder="Ingrese Costo del piano" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Bateria </label>
               <div className="relative mt-1">
-                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Bateria} required placeholder="Ingrese Costo de la bateria" />
+                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm outline-none transition-all duration-300 focus:outline-gray-500 focus:outline-1" ref={Bateria} required placeholder="Ingrese Costo de la bateria" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Salario </label>
               <div className="relative mt-1">
-                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Salario} required placeholder="Ingrese el Salario" />
+                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm outline-none transition-all duration-300 focus:outline-gray-500 focus:outline-1" ref={Salario} required placeholder="Ingrese el Salario" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Atencion </label>
               <div className="relative mt-1">
-                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Atencion} required placeholder="Ingrese Compradores Atendidos" />
+                <input type="number"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm outline-none transition-all duration-300 focus:outline-gray-500 focus:outline-1" ref={Atencion} required placeholder="Ingrese Compradores Atendidos" />
               </div>
             </div>
 
             <div>
               <label  className="text-sm font-medium"> Contratacion </label>
               <div className="relative mt-1">
-                <input type="date"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" ref={Contratacion} required placeholder="Ingrese Ingrese fecha de contratacion" />
+                <input type="date"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm outline-none transition-all duration-300 focus:outline-gray-500 focus:outline-1" ref={Contratacion} required placeholder="Ingrese Ingrese fecha de contratacion" />
               </div>
             </div>
 
