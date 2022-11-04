@@ -79,8 +79,10 @@ function EmpActs() {
                 <input type="date"  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm outline-none transition-all duration-300 focus:outline-gray-500 focus:outline-1" ref={Contratacion} required placeholder="Ingrese Ingrese fecha de contratacion" defaultValue={prop.data[0].fecha_contratacion}/>
               </div>
             </div>
-            <div></div>
-            <button type="submit" className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white" > Sign in </button>
+            <div className='flex justify-around w-full gap-4'>
+              <button type="submit" onClick={(e)=>{console.log(Nombre.current.value);}} className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white" >Actualizar</button>
+              <button type="submit" onClick={(e)=>{console.log(Nombre.current.value);}} className="block w-full rounded-lg bg-red-600 px-5 py-3 text-sm font-medium text-white" >Borrar</button>
+            </div>
           </form>
     )
   }
