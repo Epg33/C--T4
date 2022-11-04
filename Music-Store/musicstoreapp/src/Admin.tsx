@@ -17,7 +17,7 @@ const Admin = () => {
           <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.costo_guitarra}</Link></td>
           <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.costo_piano}</Link></td>
           <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.costo_bateria}</Link></td>
-          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.salario_empleado}</Link></td>
+          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/elmpleado/${emp.id_empleado}`}>{emp.salario_empleado}</Link></td>
           <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.compradores_atendidos}</Link></td>
           <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.fecha_contratacion}</Link></td>
         </tr>
