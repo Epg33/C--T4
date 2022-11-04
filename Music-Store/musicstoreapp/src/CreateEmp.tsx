@@ -7,7 +7,10 @@ function CreateEmp() {
   const makeRequest = (e:any):void => {
     e.preventDefault();
     if($(Nombre).length <3){
-      alert('Nombre debe tener al menos tres caracteres')
+      alert('Nombre debe tener al menos 3 caracteres')
+    }
+    else if($(Ocupacion).length <4){
+      alert('Ocupacion debe tener al menos 4 caracteres')
     }
     else{
       request()
