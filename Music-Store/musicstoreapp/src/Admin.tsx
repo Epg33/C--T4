@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Admin = () => {
   const [table, setTable] = useState<JSX.Element[]>([])
@@ -7,18 +8,18 @@ const Admin = () => {
   const tableContent = (prop:any[]) => {
     setTable(
       prop.map(emp => {
-        return <tr key={emp.id_empleado}>
-          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">{emp.id_empleado}</td>
-          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">{emp.nombre_empleado}</td>
-          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">{emp.cupacion}</td>
-          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">{emp.horario_llegada}</td>
-          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">{emp.horario_salida}</td>
-          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">{emp.costo_guitarra}</td>
-          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">{emp.costo_piano}</td>
-          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">{emp.costo_bateria}</td>
-          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">{emp.salario_empleado}</td>
-          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">{emp.compradores_atendidos}</td>
-          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">{emp.fecha_contratacion}</td>
+        return <tr className="flex flex-row w-full justify-around px-5" key={emp.id_empleado}>
+          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.id_empleado}</Link></td>
+          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.nombre_empleado}</Link></td>
+          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.ocupacion}</Link></td>
+          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.horario_llegada}</Link></td>
+          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.horario_salida}</Link></td>
+          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.costo_guitarra}</Link></td>
+          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.costo_piano}</Link></td>
+          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.costo_bateria}</Link></td>
+          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.salario_empleado}</Link></td>
+          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.compradores_atendidos}</Link></td>
+          <td className="w-20 text-slate-700 text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap"><Link to={`/empleado/${emp.id_empleado}`}>{emp.fecha_contratacion}</Link></td>
         </tr>
       })
     )
