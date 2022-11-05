@@ -16,6 +16,33 @@ function EmpActs() {
   const Atencion:any = useRef();
   const Contratacion:any = useRef();
 
+  const deleteEmp = (e:any) => {
+    e.preventDefault();
+    axios.delete(`http://www.musicstoreapii.somee.com/api/empleado/${url.id}`,{
+      data:
+      {
+        id_empleado: url.id
+      }
+    })
+  }
+
+  const updateEmp = (e:any):void => {
+    e.preventDefault();
+    axios.put(`http://www.musicstoreapii.somee.com/api/empleado/${url.id}`,{
+      id_empleado: url.id,
+      nombre_empleado : Nombre.current.value,
+      ocupacion : Ocupacion.current.value,
+      horario_llegada : Llegada.current.value,
+      horario_salida : Salida.current.value,
+      costo_guitarra : Guitarra.current.value,
+      costo_piano : Piano.current.value,
+      costo_bateria : Bateria.current.value,
+      salario_empleado : Salario.current.value,
+      compradores_atendidos: Atencion.current.value,
+      fecha_contratacion : Contratacion.current.value
+    }).then(res=>console.log(res))
+  }
+
   const formRender = (prop:any) => {
     setForm(
       <form action="" className="mt-6 mb-0 space-y-4 rounded-lg p-8 shadow-2xl">
@@ -80,8 +107,8 @@ function EmpActs() {
               </div>
             </div>
             <div className='flex justify-around w-full gap-4'>
-              <button type="submit" onClick={(e)=>{console.log(Nombre.current.value);}} className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white" >Actualizar</button>
-              <button type="submit" onClick={(e)=>{console.log(Nombre.current.value);}} className="block w-full rounded-lg bg-red-600 px-5 py-3 text-sm font-medium text-white" >Borrar</button>
+              <button type="submit" onClick={updateEmp} className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white" >Actualizar</button>
+              <button type="submit" onClick={deleteEmp} className="block w-full rounded-lg bg-red-600 px-5 py-3 text-sm font-medium text-white" >Borrar</button>
             </div>
           </form>
     )
