@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import {AiOutlineUserAdd} from "react-icons/ai" 
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Admin = () => {
   const [table, setTable] = useState<JSX.Element[]>([])
@@ -30,8 +32,8 @@ const Admin = () => {
   }, [])
   return (
     <>
-      <main className="bg-gradient-to-r from-sky-400 to-blue-500 w-screen h-screen flex justify-center items-center">
-        <table className="w-[93%] h-4/5 flex flex-col items-centers bg-gray-50 rounded-3xl shadow-xl">
+      <main className="bg-gradient-to-r from-sky-400 to-blue-500 w-screen h-screen flex flex-col justify-center items-center">
+        <table className="w-[93%] h-4/5 flex flex-col items-centers bg-gray-50 rounded-3xl shadow-xl mb-14">
           <thead className="w-full h-[8%] flex pt-4 bg-slate-700 rounded-t-3xl">
           <tr className="flex flex-row w-full justify-around px-5">
             <td className="w-20 text-gray-50 text-sm font-bold ">ID</td>
@@ -51,8 +53,10 @@ const Admin = () => {
             {table}
           </tbody>
         </table>
+        <NavLink to='/registro' className="grid place-content-center w-20 h-10 rounded-md bg-white transition-all duration-200 ease-linear hover:bg-yellow-200 hover:rounded-full hover:h-16 active:translate-y-2"><AiOutlineUserAdd className="text-3xl"/></NavLink>
       </main>
     </>
+
   );
 };
 
