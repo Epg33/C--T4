@@ -12,6 +12,30 @@ function CreateEmp() {
     else if($(Ocupacion).length <4){
       alert('Ocupacion debe tener al menos 4 caracteres')
     }
+    else if($(Llegada)===''){
+      alert('Hora de llegada requerida')
+    }
+    else if($(Salida)===''){
+      alert('Hora de salida requerida')
+    }
+    else if($(Guitarra)<1){
+      alert('Ingrese un valor mayor que cero para la guitarra')
+    }
+    else if($(Piano)<1){
+      alert('Ingrese un valor mayor que cero para el piano')
+    }
+    else if($(Bateria)<1){
+      alert('Ingrese un valor mayor que cero para la bateria')
+    }
+    else if (Salario.current.value<1){
+      alert('Ingrese un valor mayor que cero para el salario')
+    }
+    else if(Atencion.current.value<1){
+      alert('Ingrese un valor mayor o igual a cero para los clientes atendidos')
+    }
+    else if($(Contratacion)===''){
+      alert('La fecha debe tener dia,mes y año')
+    }
     else{
       request()
     }
@@ -39,7 +63,7 @@ function CreateEmp() {
       costo_piano : Piano.current.value,
       costo_bateria : Bateria.current.value,
       salario_empleado : Salario.current.value,
-      compradores_atendidos: Atencion.current.value,
+      compradores_atendidos: Number(Atencion.current.value),
       fecha_contratacion : Contratacion.current.value
       }   
     )

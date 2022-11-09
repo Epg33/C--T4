@@ -4,7 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar-track {
+  height: 100%;
+}
 
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px transparent; 
+  border-radius: 10px;
+}
 
 * {
   font-family: 'Roboto Mono', monospace;
