@@ -1,8 +1,11 @@
 import axios from 'axios';
 import React, {useRef, useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content'
 
 function EmpActs() {
+  const MySwal = withReactContent(Swal)
   const [form, setForm] = useState(<></>)
   const url = useParams();
   const Nombre:any = useRef();
@@ -16,16 +19,75 @@ function EmpActs() {
   const Atencion:any = useRef();
   const Contratacion:any = useRef();
 
-  const deleteEmp = (e:any) => {
-    e.preventDefault();
+  const $ = (prop:any) => {return prop.current.value};
+
+
+  const confirm = (e:any) => {
+    e.preventDefault(); 
+    Swal.fire({
+      title: 'Está seguro de eliminar el empleado?',
+      text: "No se puede revertir esta opcion!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si eliminar!'
+    }).then((result:any) => {
+      if (result.isConfirmed) {
+      deleteEmp()
+        Swal.fire(
+          'Eliminado!',
+          'El empleado ha sido eliminado.',
+          'success'
+        )
+      }
+    })
+
+  }
+
+  const deleteEmp = () => {
     axios.delete(`http://www.musicstoreapii.somee.com/api/empleado/${url.id}`,{
       data:
       {
         id_empleado: url.id
       }
+    }).then(()=>{
+     
     })
   }
-
+  const handleRequest = ():void =>{
+    if($(Nombre).length <3){
+      alert('Nombre debe tener al menos 3 caracteres')
+    }
+    else if($(Ocupacion).length <4){
+      alert('Ocupacion debe tener al menos 4 caracteres')
+    }
+    else if($(Llegada)===''){
+      alert('Hora de llegada requerida')
+    }
+    else if($(Salida)===''){
+      alert('Hora de salida requerida')
+    }
+    else if($(Guitarra)<1){
+      alert('Ingrese un valor mayor que cero para la guitarra')
+    }
+    else if($(Piano)<1){
+      alert('Ingrese un valor mayor que cero para el piano')
+    }
+    else if($(Bateria)<1){
+      alert('Ingrese un valor mayor que cero para la bateria')
+    }
+    else if (Salario.current.value<1){
+      alert('Ingrese un valor mayor que cero para el salario')
+    }
+    else if(Atencion.current.value<1){
+      alert('Ingrese un valor mayor o igual a cero para los clientes atendidos')
+    }
+    else if($(Contratacion)===''){
+      alert('La fecha debe tener dia,mes y año')
+    }
+  }
+    
   const updateEmp = (e:any):void => {
     e.preventDefault();
     axios.put(`http://www.musicstoreapii.somee.com/api/empleado/${url.id}`,{
@@ -40,8 +102,11 @@ function EmpActs() {
       salario_empleado : Salario.current.value,
       compradores_atendidos: Atencion.current.value,
       fecha_contratacion : Contratacion.current.value
-    }).then(res=>console.log(res))
-  }
+    }).then(res=>console.log(res)).then(()=>{
+      alert('Actualizado correctamente')
+    })
+  
+    }
 
   const formRender = (prop:any) => {
     setForm(
@@ -108,7 +173,7 @@ function EmpActs() {
             </div>
             <div className='flex justify-around w-full gap-4'>
               <button type="submit" onClick={updateEmp} className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white" >Actualizar</button>
-              <button type="submit" onClick={deleteEmp} className="block w-full rounded-lg bg-red-600 px-5 py-3 text-sm font-medium text-white" >Borrar</button>
+              <button type="submit" onClick={confirm} className="block w-full rounded-lg bg-red-600 px-5 py-3 text-sm font-medium text-white" >Borrar</button>
             </div>
           </form>
     )
