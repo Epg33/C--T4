@@ -188,7 +188,7 @@ function EmpActs() {
   return (
     <>
       <header>
-        <h2 className="w-full text-center text-4xl">Registrar Empleados</h2>
+        <h2 className="w-full text-center text-4xl">Actualizar Empleado</h2>
       </header>
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <main className="mx-auto max-w-lg">
