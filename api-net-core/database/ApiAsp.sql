@@ -129,4 +129,4 @@ go
 execute USP_Insertar_Producto '50910022','Mesa Comedor Volterra 4 Sillas','TUHOUSE','Mueblesito','324.12';
 execute USP_Listar_Producto;
 execute USP_Actualizar_Producto 1, '50910010','Mesa Comedor Volterra 2 Sillas','TUHOMESITO','Mueblesitito','124.12';
-execute USP_Eliminar_Producto 1;
+execute USP_Eliminar_Producto 2;
