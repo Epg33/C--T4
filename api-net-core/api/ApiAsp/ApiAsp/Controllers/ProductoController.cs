@@ -48,6 +48,7 @@ namespace ApiAsp.Controllers
                             });
                         }
                     }
+                    conexion.Close();
                 }
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = lista });
             }
@@ -86,7 +87,9 @@ namespace ApiAsp.Controllers
                                 Precio = Convert.ToDecimal(rd["Precio"])
                             });
                         }
+                        
                     }
+                    conexion.Close();
                 }
                 oproducto = lista.Where(item => item.IdProducto == idProducto).FirstOrDefault();
 
@@ -117,6 +120,7 @@ namespace ApiAsp.Controllers
                     cmd.Parameters.AddWithValue("precio", objeto.Precio);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
+                    conexion.Close();
                 }
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "agregado" });
             }
@@ -144,10 +148,34 @@ namespace ApiAsp.Controllers
                     cmd.Parameters.AddWithValue("precio", objeto.Precio == 0 ? DBNull.Value : objeto.Precio);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
+                    conexion.Close();
                 }
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "editado" });
             }
             catch (Exception error)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = error.Message });
+            }
+        }
+
+        [HttpDelete]
+        [Route("Eliminar/{idProducto:int}")]
+        public IActionResult Eliminar(int idProducto)
+        {
+            try
+            {
+                using (var conexion = new SqlConnection(cadenaSQL))
+                {
+                    conexion.Open();
+                    var cmd = new SqlCommand("USP_Eliminar_Producto", conexion);
+                    cmd.Parameters.AddWithValue("Id", idProducto);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
+                    //conexion.Close();
+                }
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "eliminado" });
+            }
+            catch(Exception error)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = error.Message });
             }
