@@ -6,11 +6,7 @@ import { useEffect, useState } from 'react'
 function Crear() {
 
 	useEffect(()=>{
-		axios.get('https://localhost:7105/api/producto/lista', {
-			headers: {
-				'content-type': 'application/json;charset=UTF-8'
-			}, data : {}
-		})
+		axios.get('https://localhost:7105/api/producto/lista')
 			.then(res => console.log(res))
 			.catch(err => console.log(err))
 	})
