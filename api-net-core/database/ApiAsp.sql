@@ -10,6 +10,105 @@ create table PRODUCTO (
 	Precio decimal(10, 2)
 );
 
+create table usuario (
+	id_usuario int primary key identity(1000, 5),
+	correo varchar(200) not null unique,
+	clave varchar(50) not null
+);
+
+go
+create procedure USP_Listar_Usuarios
+as
+begin transaction TXT
+	select * from usuario;
+	if @@ERROR > 0
+	begin 
+	rollback transaction TXT 
+	select 'Hubo un error' as Respuesta 
+	end
+	else 
+	begin 
+	commit transaction TXT
+	select 'Listado exitoso' as Respuesta
+end
+go
+
+go
+create procedure USP_Obtener1_Usuario
+@Id  int
+as 
+begin transaction xnxx
+	select * from usuario where id_usuario = @Id;
+	if @@ERROR > 0
+	begin 
+	rollback transaction xnxx 
+	select 'Hubo un error' as Respuesta 
+	end
+	else 
+	begin 
+	commit transaction xnxx
+	select 'Consulta exitosa' as Respuesta
+end
+go
+
+go
+create procedure USP_Actualizar_Usuario
+@Id int,
+@correo varchar(200),
+@clave varchar(50)
+as
+begin transaction xnxx_Actualizar
+	BEGIN TRY 
+		UPDATE usuario set 
+		correo = @correo,
+		clave = @clave
+		where id_usuario=@Id;
+		
+		commit transaction TX
+		select 'Actualización exitosa' as Respuesta
+	END TRY
+	BEGIN CATCH 
+		ROLLBACK transaction TX
+		select ERROR_MESSAGE() as Respuesta
+	END CATCH
+go
+
+go
+create procedure USP_Eliminar_Usuario
+@Id int
+as
+begin transaction Borrar
+	BEGIN TRY 
+		DELETE from usuario where id_usuario = @Id
+
+		commit transaction Borrar
+		select 'Eliminado correctamente' as respuesta
+	END TRY
+	
+	BEGIN CATCH
+		ROLLBACK transaction Borrar
+		select ERROR_MESSAGE() as Respuesta
+	END CATCH
+go
+
+go 
+create procedure USP_Insertar_Usuario
+@correo varchar(200),
+@clave varchar(50)
+as
+begin transaction Insertar
+	begin try 
+		insert into usuario(correo, clave) values ( @correo, @clave);
+		commit transaction Insertar
+		select 'Ingreso Exitoso' as Respuesta
+	end try
+
+	begin catch
+		rollback transaction Insertar
+		select ERROR_MESSAGE() as Respuesta
+	end catch
+go
+
 INSERT INTO PRODUCTO(CodigoBarra,Nombre,Marca,Categoria,Precio) values
 ('50910010','Monitor Aoc - Curvo Gaming ','AOC','Tecnologia','1200'),
 ('50910011','IdeaPad 3i','LENOVO','Tecnologia','1700'),
