@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
 using System.Data;
@@ -10,6 +11,7 @@ namespace ApiAsp.Controllers
 {
     [EnableCors("ReglasCors")]
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class ProductoController : ControllerBase
     {

@@ -29,7 +29,23 @@ namespace asp_api.Controllers
                 var claims = new ClaimsIdentity();
                 claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, request.correo));
 
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = claims,
+                    Expires = DateTime.UtcNow.AddMinutes(5),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(keyBytes), SecurityAlgorithms.HmacSha256Signature)
+                };
 
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var tokenCongif = tokenHandler.CreateToken(tokenDescriptor);
+
+                string tokenCreado = tokenHandler.WriteToken(tokenCongif); 
+                
+                return StatusCode(StatusCodes.Status200OK, new { token = tokenCreado });
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status401Unauthorized, new { token = "" });
             }
         }
     }

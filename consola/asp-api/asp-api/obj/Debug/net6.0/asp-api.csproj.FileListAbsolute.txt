@@ -36,3 +36,14 @@ D:\System32\C--T4\consola\asp-api\asp-api\obj\Debug\net6.0\refint\asp-api.dll
 D:\System32\C--T4\consola\asp-api\asp-api\obj\Debug\net6.0\asp-api.pdb
 D:\System32\C--T4\consola\asp-api\asp-api\obj\Debug\net6.0\asp-api.genruntimeconfig.cache
 D:\System32\C--T4\consola\asp-api\asp-api\obj\Debug\net6.0\ref\asp-api.dll
+D:\System32\C--T4\consola\asp-api\asp-api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\System32\C--T4\consola\asp-api\asp-api\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\System32\C--T4\consola\asp-api\asp-api\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\System32\C--T4\consola\asp-api\asp-api\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\System32\C--T4\consola\asp-api\asp-api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\System32\C--T4\consola\asp-api\asp-api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\System32\C--T4\consola\asp-api\asp-api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.WsTrust.dll
+D:\System32\C--T4\consola\asp-api\asp-api\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\System32\C--T4\consola\asp-api\asp-api\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.Saml.dll
+D:\System32\C--T4\consola\asp-api\asp-api\bin\Debug\net6.0\Microsoft.IdentityModel.Xml.dll
+D:\System32\C--T4\consola\asp-api\asp-api\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
