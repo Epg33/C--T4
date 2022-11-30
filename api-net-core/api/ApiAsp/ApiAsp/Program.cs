@@ -4,11 +4,11 @@ var misReglasCors = "ReglasCors";
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: misReglasCors,
-                      builder =>
+                      policy =>
                       {
-                          builder.AllowAnyOrigin()
-                          .AllowAnyHeader()
-                          .AllowAnyMethod();
+                          policy.AllowAnyHeader();
+                          policy.AllowAnyMethod();
+                          policy.AllowAnyOrigin();
                       });
 });
 
@@ -30,11 +30,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors(misReglasCors);
+
 app.UseAuthorization();
 
 app.MapControllers();
-app.UseCors(misReglasCors);
-
 
 app.Run();
 
