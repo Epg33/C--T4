@@ -56,14 +56,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors(misReglasCors);
-
 app.UseAuthentication();
 
 app.UseAuthorization();
 
+app.UseCors(misReglasCors);
+
 app.MapControllers();
 
 app.Run();
-
-

@@ -177,5 +177,27 @@ namespace asp_api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = error.Message });
             }
         }
+
+        [HttpDelete]
+        [Route("Eliminar/{id_usuario:int")]
+        public IActionResult Eliminar (int idUsuario)
+        {
+            try
+            {
+                using (var conexion = new SqlConnection(cadenaSql))
+                {
+                    conexion.Open();
+                    var cmd = new SqlCommand("USP_Eliminar_Usuario", conexion);
+                    cmd.Parameters.AddWithValue("id_usuario", idUsuario);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
+                }
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "eliminado" });
+            }
+            catch (Exception error)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = error.Message });
+            }
+        }
     }
 }
