@@ -4,7 +4,10 @@ using asp_api.Modelos;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Data.SqlClient;
+using System.Data;
 using System.Text;
+
 
 namespace asp_api.Controllers
 {
@@ -13,6 +16,7 @@ namespace asp_api.Controllers
     public class AutenticationController : ControllerBase
     {
         private readonly string secretKey;
+        private readonly string cadenaSql;
 
         public AutenticationController(IConfiguration config)
         {
@@ -46,6 +50,131 @@ namespace asp_api.Controllers
             else
             {
                 return StatusCode(StatusCodes.Status401Unauthorized, new { token = "" });
+            }
+        }
+
+        [HttpGet]
+        [Route("Listar")]
+        public IActionResult Listar()
+        {
+            List<Usuario> lista = new List<Usuario>();
+
+            try
+            {
+                using (var conexion = new SqlConnection(cadenaSql))
+                {
+                    conexion.Open();
+                    var cmd = new SqlCommand("USP_Listar_Usuarios", conexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista.Add(new Usuario
+                            {
+                                idUsuario = Convert.ToInt32(reader["id_usuario"]),
+                                correo = reader["correo"].ToString(),
+                                clave = reader["clave"].ToString()
+                            });
+                        }
+                    }
+                    conexion.Close();
+
+                }
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", lista= lista });
+            }
+            catch(Exception error)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = error.Message });
+            }
+        }
+
+        [HttpGet]
+        [Route("Obtener/{idUsuario}")]
+        public IActionResult Obtener(int idUsuario)
+        {
+            List<Usuario> lista = new List<Usuario>();
+            Usuario user = new Usuario();
+
+            try
+            {
+                using (var conexion = new SqlConnection(cadenaSql))
+                {
+                    conexion.Open();
+                    var cmd = new SqlCommand("USP_Listar_Usuarios", conexion);
+                    cmd.Parameters.AddWithValue("Id", idUsuario);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista.Add(new Usuario
+                            {
+                                idUsuario = Convert.ToInt32(reader["id_usuario"]),
+                                correo = reader["correo"].ToString(),
+                                clave = reader["clave"].ToString()
+                            });
+                        }
+                    }
+                    conexion.Close();
+
+                }
+                user = lista.Where(item => item.idUsuario == idUsuario).FirstOrDefault();
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", user = user });
+            }
+            catch (Exception error)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = error.Message });
+            }
+        }
+
+        [HttpPost]
+        [Route("Guardar")]
+        public IActionResult Guardar([FromBody] Usuario usuario)
+        {
+            try
+            {
+                using (var conexion = new SqlConnection(cadenaSql))
+                {
+                    conexion.Open();
+                    var cmd = new SqlCommand("USP_Insertar_Usuario", conexion);
+                    cmd.Parameters.AddWithValue("correo", usuario.correo);
+                    cmd.Parameters.AddWithValue("clave", usuario.clave);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
+                    conexion.Close();
+                }
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "Agregado" });
+            }
+            catch (Exception error)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensake = error.Message });
+            }
+        }
+
+        [HttpPut]
+        [Route("Editar")]
+        public IActionResult Editar([FromBody] Usuario usuario)
+        {
+            try
+            {
+                using (var conexion = new SqlConnection(cadenaSql))
+                {
+                    conexion.Open();
+                    var cmd = new SqlCommand("USP_Actualizar_Usuario", conexion);
+                    cmd.Parameters.AddWithValue("id_usuario", usuario.idUsuario == 0 ? DBNull.Value : usuario.idUsuario);
+                    cmd.Parameters.AddWithValue("Correo", usuario.correo is null ? DBNull.Value : usuario.correo);
+                    cmd.Parameters.AddWithValue("Clave", usuario.clave is null ? DBNull.Value : usuario.clave);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
+                    conexion.Close();
+                }
+
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "Editado" });
+            }
+            catch (Exception error)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = error.Message });
             }
         }
     }
